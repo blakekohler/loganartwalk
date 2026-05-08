@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Logan Art Walk 2026 / Downtown Logan</title>
+<meta name="description" content="A weekend of art, community & conversation. Second Friday and Saturday of each month, downtown Logan." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue:   #6D71D0;
+  --yellow: #E0D677;
+  --teal:   #83BFBD;
+  --green:  #BCD49D;
+  --pink:   #B85C63;
+  --pinkl:  #EEDEEA;
+  --ink:    #1a1a1a;
+
+  --display: 'SIFONN', 'Big Shoulders Display', 'Arial Black', sans-serif;
+  --body: Arial, Helvetica, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--blue);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img, video { display: block; max-width: 100%; }
+a { color: inherit; }
+
+.display { font-family: var(--display); text-transform: uppercase; line-height: 0.88; font-weight: 800; }
+.label { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.18em; font-weight: 700; font-size: 11px; }
+
+/* ---------- MARQUEE ---------- */
+.marquee {
+  background: var(--ink);
+  color: var(--yellow);
+  padding: 14px 0;
+  overflow: hidden;
+  border-top: 3px solid var(--yellow);
+  border-bottom: 3px solid var(--yellow);
+}
+.mq-track {
+  display: inline-flex;
+  gap: 36px;
+  white-space: nowrap;
+  font-family: var(--display); font-weight: 800; letter-spacing: 0.2em; font-size: 18px;
+  text-transform: uppercase;
+  animation: scroll 30s linear infinite;
+}
+.mq-track .dot { color: var(--pink); }
+.mq-track > div { display: inline-flex; gap: 36px; }
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee.alt { background: var(--pink); color: var(--yellow); border-color: var(--ink); }
+.marquee.alt .mq-track { animation-direction: reverse; animation-duration: 38s; }
+.marquee.alt .mq-track .dot { color: var(--yellow); }
+
+/* ---------- BAR ---------- */
+.bar {
+  background: var(--blue);
+  color: var(--yellow);
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.lock { display: flex; align-items: baseline; gap: 8px; text-decoration: none; color: var(--yellow); }
+.lock .word { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: 0.04em; }
+.lock .dots { display: inline-flex; gap: 5px; }
+.lock .dots i { width: 7px; height: 7px; background: var(--yellow); border-radius: 50%; display: block; animation: bounce 1.4s ease-in-out infinite; }
+.lock .dots i:nth-child(2) { animation-delay: 0.15s; }
+.lock .dots i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.bar nav { display: flex; gap: 18px; }
+.bar nav a { font-family: var(--display); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; padding: 6px 10px; border: 2px solid var(--yellow); border-radius: 999px; }
+.bar nav a:hover { background: var(--yellow); color: var(--blue); }
+@media (max-width: 720px) { .bar nav { display: none; } }
+
+/* ---------- HERO ---------- */
+.hero {
+  background: var(--blue);
+  color: var(--yellow);
+  padding: 72px 24px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-in { max-width: 1200px; margin: 0 auto; position: relative; }
+
+.hero-stage {
+  text-align: center;
+}
+.hero-eye {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--pink); color: var(--yellow);
+  padding: 8px 16px;
+  font-family: var(--display); font-weight: 800; letter-spacing: 0.18em; font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  border-radius: 999px;
+}
+.hero-eye .pip { width: 8px; height: 8px; background: var(--yellow); border-radius: 50%; animation: blink 1.4s ease-in-out infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.hero-mark {
+  font-family: var(--display); font-weight: 800;
+  font-size: clamp(110px, 22vw, 320px);
+  line-height: 0.86; letter-spacing: 0.02em;
+  color: var(--yellow);
+}
+.hero-mark .row { display: block; }
+.hero-mark .row.b { display: inline-flex; align-items: center; gap: clamp(16px, 3vw, 36px); }
+.hero-mark .threedots { display: inline-flex; gap: clamp(12px, 2vw, 22px); }
+.hero-mark .threedots i {
+  width: clamp(20px, 3.4vw, 50px); height: clamp(20px, 3.4vw, 50px);
+  background: var(--yellow); border-radius: 50%;
+  animation: bounce 1.6s ease-in-out infinite;
+}
+.hero-mark .threedots i:nth-child(2) { background: var(--pinkl); animation-delay: 0.18s; }
+.hero-mark .threedots i:nth-child(3) { background: var(--teal); animation-delay: 0.36s; }
+
+.hero-tag {
+  margin-top: 32px;
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(16px, 2vw, 22px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  max-width: 720px; margin-left: auto; margin-right: auto;
+  line-height: 1.2;
+}
+.hero-tag .amp { color: var(--pinkl); }
+
+/* decorative shapes */
+.deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+.deco.d1 { top: 8%; left: 5%; width: 60px; height: 60px; background: var(--teal); border-radius: 50%; animation: float 7s ease-in-out infinite; }
+.deco.d2 { bottom: 10%; right: 8%; width: 50px; height: 50px; background: var(--pink); border-radius: 50%; animation: float 9s ease-in-out infinite reverse; }
+.deco.d3 { top: 20%; right: 10%; width: 30px; height: 30px; background: var(--green); border-radius: 50%; animation: float 6s ease-in-out infinite; }
+.deco.d4 { bottom: 25%; left: 10%; width: 40px; height: 40px; background: var(--pinkl); border-radius: 50%; animation: float 8s ease-in-out infinite reverse; }
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(8deg); }
+}
+
+/* ---------- DATES STRIP ---------- */
+.dates {
+  background: var(--yellow);
+  color: var(--ink);
+  padding: 64px 24px;
+}
+.dates-in { max-width: 1200px; margin: 0 auto; }
+.dates h2 {
+  font-family: var(--display); font-weight: 800;
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 0.95;
+  text-align: center;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.dates h2 .b { color: var(--blue); }
+.dates .lede {
+  font-family: var(--display); letter-spacing: 0.18em; font-size: 13px;
+  text-align: center; text-transform: uppercase; margin-bottom: 48px;
+}
+
+.cal {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+.cal .m {
+  background: var(--ink);
+  color: var(--yellow);
+  padding: 22px 14px 18px;
+  font-family: var(--display);
+  text-transform: uppercase;
+  cursor: default;
+  transition: transform 0.2s, background 0.2s;
+  border-radius: 8px;
+}
+.cal .m:hover { transform: rotate(-2deg) scale(1.04); }
+.cal .m:nth-child(1) { background: var(--teal); color: var(--ink); }
+.cal .m:nth-child(2) { background: var(--pink); }
+.cal .m:nth-child(3) { background: var(--green); color: var(--ink); }
+.cal .m:nth-child(4) { background: var(--blue); }
+.cal .m:nth-child(5) { background: var(--pinkl); color: var(--ink); }
+.cal .m:nth-child(6) { background: var(--green); color: var(--ink); }
+.cal .m:nth-child(7) { background: var(--teal); color: var(--ink); }
+.cal .m.now { outline: 4px solid var(--ink); outline-offset: 4px; transform: scale(1.04); }
+.cal .m .num { font-size: 11px; letter-spacing: 0.16em; opacity: 0.7; }
+.cal .m .name { font-size: clamp(18px, 2vw, 24px); font-weight: 800; margin: 12px 0 6px; line-height: 0.95; }
+.cal .m .day { font-size: 12px; letter-spacing: 0.12em; opacity: 0.85; }
+
+@media (max-width: 1100px) { .cal { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 600px)  { .cal { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- VIDEO ---------- */
+.video-section {
+  background: var(--green);
+  padding: 80px 24px;
+}
+.video-in { max-width: 1100px; margin: 0 auto; }
+.video-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+.video-head h2 {
+  font-family: var(--display); font-weight: 800;
+  font-size: clamp(36px, 5.5vw, 64px); line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.video-head h2 .pinky { color: var(--pink); }
+.video-head .label { color: var(--ink); opacity: 0.6; }
+
+.video-frame {
+  position: relative;
+  border: 6px solid var(--ink);
+  background: var(--ink);
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.video-frame video { width: 100%; height: 100%; object-fit: cover; }
+.video-tabs {
+  position: absolute; top: 14px; left: 14px;
+  display: flex; gap: 6px; z-index: 2;
+}
+.video-tabs span {
+  background: var(--yellow); color: var(--ink);
+  padding: 4px 10px;
+  font-family: var(--display); font-weight: 800; letter-spacing: 0.16em; font-size: 10px;
+  border-radius: 4px;
+}
+.video-tabs span:nth-child(2) { background: var(--pink); color: var(--yellow); }
+
+/* ---------- INFO ---------- */
+.info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.info .cell {
+  padding: 56px 32px;
+  font-family: var(--display);
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+.info .cell .label { font-size: 11px; opacity: 0.7; display: block; margin-bottom: 14px; }
+.info .cell .big { font-size: clamp(24px, 3vw, 36px); font-weight: 800; line-height: 0.95; }
+.info .cell.a { background: var(--pink); color: var(--yellow); }
+.info .cell.b { background: var(--teal); color: var(--ink); }
+.info .cell.c { background: var(--pinkl); color: var(--ink); }
+.info .cell::after {
+  content: ''; position: absolute; right: -20px; bottom: -20px;
+  width: 80px; height: 80px; border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+}
+@media (max-width: 720px) { .info { grid-template-columns: 1fr; } }
+
+/* ---------- CTA ---------- */
+.cta {
+  background: var(--ink); color: var(--yellow);
+  padding: 100px 24px; text-align: center;
+}
+.cta h2 {
+  font-family: var(--display); font-weight: 800;
+  font-size: clamp(48px, 8vw, 110px); line-height: 0.9;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.cta h2 .y { color: var(--pink); }
+.cta a {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--yellow); color: var(--ink); text-decoration: none;
+  padding: 22px 36px;
+  font-family: var(--display); font-weight: 800; letter-spacing: 0.18em; font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: transform 0.2s, background 0.2s;
+}
+.cta a:hover { background: var(--pink); color: var(--yellow); transform: translateY(-3px); }
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: var(--blue); color: var(--yellow);
+  padding: 64px 24px 32px;
+}
+.foot-in { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 32px; }
+.foot-mark {
+  font-family: var(--display); font-weight: 800;
+  font-size: clamp(56px, 10vw, 140px);
+  line-height: 0.85; letter-spacing: 0.02em;
+}
+.foot-mark .threedots { display: inline-flex; gap: clamp(8px, 1.5vw, 14px); margin-left: 12px; }
+.foot-mark .threedots i { display: inline-block; width: clamp(14px, 2vw, 26px); height: clamp(14px, 2vw, 26px); background: var(--yellow); border-radius: 50%; }
+.foot-meta { font-family: var(--display); letter-spacing: 0.16em; font-size: 12px; line-height: 1.8; text-transform: uppercase; text-align: right; }
+.foot-meta a { text-decoration: underline; }
+@media (max-width: 720px) { .foot-meta { text-align: left; } }
+.foot-line {
+  margin-top: 32px; padding-top: 20px;
+  border-top: 1px solid rgba(224,214,119,0.2);
+  font-family: var(--display); letter-spacing: 0.16em; font-size: 11px; opacity: 0.6;
+  text-transform: uppercase; text-align: center;
+}
+</style>
+</head>
+<body>
+
+<!-- TOP MARQUEE -->
+<div class="marquee">
+  <div class="mq-track">
+    <div>ART WALK <span class="dot">●</span> DOWNTOWN LOGAN <span class="dot">●</span> APRIL 10+11 <span class="dot">●</span> MAY 8+9 <span class="dot">●</span> JUNE 12+13 <span class="dot">●</span> JULY 10+11 <span class="dot">●</span> AUGUST 14+15 <span class="dot">●</span> SEPTEMBER 11+12 <span class="dot">●</span> OCTOBER 9+10 <span class="dot">●</span></div>
+    <div>ART WALK <span class="dot">●</span> DOWNTOWN LOGAN <span class="dot">●</span> APRIL 10+11 <span class="dot">●</span> MAY 8+9 <span class="dot">●</span> JUNE 12+13 <span class="dot">●</span> JULY 10+11 <span class="dot">●</span> AUGUST 14+15 <span class="dot">●</span> SEPTEMBER 11+12 <span class="dot">●</span> OCTOBER 9+10 <span class="dot">●</span></div>
+  </div>
+</div>
+
+<!-- BAR -->
+<header class="bar">
+  <a href="#" class="lock">
+    <span class="word">ART WALK</span>
+    <span class="dots"><i></i><i></i><i></i></span>
+  </a>
+  <nav>
+    <a href="#dates">Dates</a>
+    <a href="#video">Watch</a>
+    <a href="#info">Info</a>
+    <a href="#cta">Visit</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="deco d1"></span>
+  <span class="deco d2"></span>
+  <span class="deco d3"></span>
+  <span class="deco d4"></span>
+
+  <div class="hero-in">
+    <div class="hero-stage">
+      <div class="hero-eye"><span class="pip"></span>HAPPENING TONIGHT 6 TO 9 PM</div>
+
+      <h1 class="hero-mark">
+        <span class="row">ART</span>
+        <span class="row b">
+          WALK
+          <span class="threedots"><i></i><i></i><i></i></span>
+        </span>
+      </h1>
+
+      <p class="hero-tag">A weekend of art, community <span class="amp">&amp;</span> conversation. <br/>Downtown Logan, Utah. 2026.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ALT MARQUEE -->
+<div class="marquee alt">
+  <div class="mq-track">
+    <div>FREE <span class="dot">★</span> ALL AGES <span class="dot">★</span> SECOND FRIDAY 6-9 <span class="dot">★</span> SECOND SATURDAY 10-4 <span class="dot">★</span> APRIL TO OCTOBER <span class="dot">★</span> RAIN OR SHINE <span class="dot">★</span> COOKIES LIKELY <span class="dot">★</span></div>
+    <div>FREE <span class="dot">★</span> ALL AGES <span class="dot">★</span> SECOND FRIDAY 6-9 <span class="dot">★</span> SECOND SATURDAY 10-4 <span class="dot">★</span> APRIL TO OCTOBER <span class="dot">★</span> RAIN OR SHINE <span class="dot">★</span> COOKIES LIKELY <span class="dot">★</span></div>
+  </div>
+</div>
+
+<!-- DATES -->
+<section class="dates" id="dates">
+  <div class="dates-in">
+    <h2>Seven walks. <span class="b">One Main Street.</span></h2>
+    <div class="lede">Save the dates / 2026 season</div>
+
+    <div class="cal">
+      <div class="m"><div class="num">WALK 01</div><div class="name">April</div><div class="day">10 + 11</div></div>
+      <div class="m now"><div class="num">WALK 02 / NOW</div><div class="name">May</div><div class="day">8 + 9</div></div>
+      <div class="m"><div class="num">WALK 03</div><div class="name">June</div><div class="day">12 + 13</div></div>
+      <div class="m"><div class="num">WALK 04</div><div class="name">July</div><div class="day">10 + 11</div></div>
+      <div class="m"><div class="num">WALK 05</div><div class="name">August</div><div class="day">14 + 15</div></div>
+      <div class="m"><div class="num">WALK 06</div><div class="name">September</div><div class="day">11 + 12</div></div>
+      <div class="m"><div class="num">WALK 07</div><div class="name">October</div><div class="day">9 + 10</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section" id="video">
+  <div class="video-in">
+    <div class="video-head">
+      <h2>What it <span class="pinky">looks like.</span></h2>
+      <span class="label">60 seconds / Walk weekend</span>
+    </div>
+    <div class="video-frame">
+      <div class="video-tabs"><span>PLAY</span><span>2026</span></div>
+      <video src="artwalk.mp4" poster="poster.jpg" controls preload="metadata" playsinline></video>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info" id="info">
+  <div class="cell a">
+    <span class="label">Where</span>
+    <div class="big">Main Street<br/>Downtown<br/>Logan</div>
+  </div>
+  <div class="cell b">
+    <span class="label">When</span>
+    <div class="big">Friday 6 to 9.<br/>Saturday<br/>10 to 4.</div>
+  </div>
+  <div class="cell c">
+    <span class="label">Cost</span>
+    <div class="big">Free.<br/>All ages.<br/>Always.</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <h2>Come to <span class="y">downtown</span><br/>this weekend.</h2>
+  <a href="#">Plan Your Walk &rarr;</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-mark">
+      ART WALK<span class="threedots"><i></i><i></i><i></i></span>
+    </div>
+    <div class="foot-meta">
+      Downtown Logan, UT 84321<br/>
+      <a href="mailto:hello@loganartwalk.com">hello@loganartwalk.com</a><br/>
+      © 2026 Logan Art Walk
+    </div>
+  </div>
+  <div class="foot-line">A WEEKEND OF ART, COMMUNITY &amp; CONVERSATION / LOGANARTWALK.COM</div>
+</footer>
+
+</body>
+</html>
