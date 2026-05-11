@@ -379,13 +379,13 @@ footer {
     <div class="lede">Save the dates / 2026 season</div>
 
     <div class="cal">
-      <div class="m"><div class="num">WALK 01</div><div class="name">April</div><div class="day">10 + 11</div></div>
-      <div class="m now"><div class="num">WALK 02 / NOW</div><div class="name">May</div><div class="day">8 + 9</div></div>
-      <div class="m"><div class="num">WALK 03</div><div class="name">June</div><div class="day">12 + 13</div></div>
-      <div class="m"><div class="num">WALK 04</div><div class="name">July</div><div class="day">10 + 11</div></div>
-      <div class="m"><div class="num">WALK 05</div><div class="name">August</div><div class="day">14 + 15</div></div>
-      <div class="m"><div class="num">WALK 06</div><div class="name">September</div><div class="day">11 + 12</div></div>
-      <div class="m"><div class="num">WALK 07</div><div class="name">October</div><div class="day">9 + 10</div></div>
+      <div class="m" data-dates="04-10,04-11"><div class="num">WALK 01</div><div class="name">April</div><div class="day">10 + 11</div></div>
+      <div class="m" data-dates="05-08,05-09"><div class="num">WALK 02</div><div class="name">May</div><div class="day">8 + 9</div></div>
+      <div class="m" data-dates="06-12,06-13"><div class="num">WALK 03</div><div class="name">June</div><div class="day">12 + 13</div></div>
+      <div class="m" data-dates="07-10,07-11"><div class="num">WALK 04</div><div class="name">July</div><div class="day">10 + 11</div></div>
+      <div class="m" data-dates="08-14,08-15"><div class="num">WALK 05</div><div class="name">August</div><div class="day">14 + 15</div></div>
+      <div class="m" data-dates="09-11,09-12"><div class="num">WALK 06</div><div class="name">September</div><div class="day">11 + 12</div></div>
+      <div class="m" data-dates="10-09,10-10"><div class="num">WALK 07</div><div class="name">October</div><div class="day">9 + 10</div></div>
     </div>
   </div>
 </section>
@@ -440,6 +440,52 @@ footer {
   </div>
   <div class="foot-line">A WEEKEND OF ART, COMMUNITY &amp; CONVERSATION / LOGANARTWALK.COM</div>
 </footer>
+
+<script>
+function highlightCurrentWalk() {
+  const today = new Date();
+  const currentMonth = String(today.getMonth() + 1).padStart(2, '0');
+  const currentDay = String(today.getDate()).padStart(2, '0');
+  const currentDate = currentMonth + '-' + currentDay;
+
+  const walks = document.querySelectorAll('.cal .m');
+  let highlighted = false;
+
+  // First pass: check if today falls within a walk weekend
+  walks.forEach(walk => {
+    const dates = walk.getAttribute('data-dates').split(',');
+    if (dates.includes(currentDate)) {
+      walk.classList.add('now');
+      highlighted = true;
+    } else {
+      walk.classList.remove('now');
+    }
+  });
+
+  // Second pass: if no current walk, highlight the next upcoming walk
+  if (!highlighted) {
+    walks.forEach(walk => {
+      const dates = walk.getAttribute('data-dates').split(',');
+      const month = parseInt(dates[0].split('-')[0]);
+      const day = parseInt(dates[0].split('-')[1]);
+      const walkDate = new Date(2026, month - 1, day);
+
+      if (walkDate > today) {
+        if (!document.querySelector('.cal .m.now')) {
+          walk.classList.add('now');
+        }
+        return; // Stop at first future walk
+      }
+    });
+  }
+}
+
+// Run on page load
+highlightCurrentWalk();
+
+// Update every minute to catch date changes
+setInterval(highlightCurrentWalk, 60000);
+</script>
 
 </body>
 </html>
